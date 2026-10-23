@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Notes — Personal Catalog</title><meta name="description" content="Notes and records I keep."><meta name="author" content="Yi Mei"><meta name="theme-color" content="#F4F3EE"><link rel="canonical" href="https://meiyi376796.github.io/notes/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta property="og:type" content="website"><meta property="og:site_name" content="Personal Catalog"><meta property="og:title" content="Notes — Personal Catalog"><meta property="og:description" content="Notes and records I keep."><meta property="og:url" content="https://meiyi376796.github.io/notes/"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Notes — Personal Catalog"><meta name="twitter:description" content="Notes and records I keep."><link rel="preload" href="/_astro/libre-franklin-latin-400-normal.DNAyL8lK.woff2" as="font" type="font/woff2" crossorigin="anonymous"><link rel="preload" href="/_astro/libre-franklin-latin-700-normal.TBBKpXzk.woff2" as="font" type="font/woff2" crossorigin="anonymous"><link rel="preload" href="/_astro/ibm-plex-mono-latin-400-normal.DMJ8VG8y.woff2" as="font" type="font/woff2" crossorigin="anonymous"><link rel="preload" href="/_astro/ibm-plex-mono-latin-500-normal.DSY6xOcd.woff2" as="font" type="font/woff2" crossorigin="anonymous"><link rel="stylesheet" href="/_astro/sections.Bjd3tdbM.css"></head><body class="site"><a class="skip" href="#main">Skip to content</a><header class="site-header"><div class="masthead"><a class="brand" href="/" aria-label="Personal Catalog, home"><span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><g fill="currentColor"><rect x="2" y="2" width="3" height="12"></rect><rect x="11" y="2" width="3" height="12"></rect><rect x="4" y="4" width="2" height="2"></rect><rect x="5" y="5" width="2" height="2"></rect><rect x="6" y="6" width="2" height="2"></rect><rect x="7" y="7" width="2" height="2"></rect><rect x="8" y="7" width="2" height="2"></rect><rect x="9" y="6" width="2" height="2"></rect><rect x="10" y="5" width="2" height="2"></rect></g></svg></span><span class="brand__text">Personal Catalog</span></a><span class="masthead__edition" data-volume>Vol. 01 / 2026</span><div class="clock" aria-hidden="true"><span class="clock__dot"></span><span id="clock">LOCAL</span></div></div><div class="rainbow" aria-hidden="true"></div></header><script>
+  // Inline so the clock is set before the new page is captured.
+  const clock = document.getElementById("clock");
+  const fmt = new Intl.DateTimeFormat("en-GB", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
+  let timer;
+  const tick = () => {
+    const now = new Date();
+    clock.textContent = `LOCAL ${fmt.format(now)}`;
+    clearTimeout(timer);
+    timer = window.setTimeout(
+      tick,
+      60000 - (now.getSeconds() * 1000 + now.getMilliseconds()),
+    );
+  };
+  tick();
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) tick();
+  });
+
+  const brand = document.querySelector(".brand");
+  const brandText = brand?.querySelector(".brand__text");
+
+  const fitBrand = () => {
+    if (!brand || !brandText) return;
+    brand.removeAttribute("data-compact");
+    if (brandText.scrollWidth > brandText.clientWidth) {
+      brand.setAttribute("data-compact", "");
+    }
+  };
+
+  fitBrand();
+  document.fonts?.ready.then(fitBrand);
+  window.addEventListener("resize", fitBrand, { passive: true });
+</script><main class="stage" id="main" tabindex="-1"><section class="sheet" aria-label="Notes"><div class="sheet__main"><div class="sheet__body"><div class="sheet__head"><h1 class="sheet__kicker">Notes</h1><span class="sheet__count">00 Entries</span></div><div class="ledger"><div class="ledger__row ledger__row--head"><span>No.</span><span>Note</span><span>Date</span></div><div class="ledger__empty"><p>No notes yet.</p></div></div></div></div></section></main><footer class="bar"><div class="rainbow rainbow--reverse" aria-hidden="true"></div><div class="bar__inner"><a class="bar__link" href="/work/" aria-label="Work">← Work</a><span class="bar__center">02</span><a class="bar__link bar__link--next" href="/about/" aria-label="About">About →</a></div></footer><script type="module">var e=document.querySelector(`[data-scroll-top]`),t=document.querySelector(`.stage`);e?.addEventListener(`click`,e=>{if(!t)return;e.preventDefault();let n=window.matchMedia(`(prefers-reduced-motion: reduce)`).matches;t.scrollTo({top:0,behavior:n?`auto`:`smooth`})});</script><script type="module">var e=e=>String(e).padStart(2,`0`),t={startYear:2026,rolloverMonth:5,rolloverDay:27},{label:n}=((n=new Date)=>{let r=t.rolloverMonth-1,i=n.getFullYear();return n.getMonth()>r||n.getMonth()===r&&n.getDate()>=t.rolloverDay||--i,i=Math.max(i,t.startYear),{label:`Vol. ${e(i-t.startYear+1)} / ${i}`}})();document.querySelectorAll(`[data-volume]`).forEach(e=>{e.textContent=n});</script></body></html>
