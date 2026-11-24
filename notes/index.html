@@ -1,0 +1,109 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Notes — Personal Catalog</title><meta name="description" content="Notes and records I keep."><meta name="author" content="Yi Mei"><meta name="theme-color" content="#F4F3EE"><link rel="canonical" href="https://meiyi376796.github.io/notes/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta property="og:type" content="website"><meta property="og:site_name" content="Personal Catalog"><meta property="og:title" content="Notes — Personal Catalog"><meta property="og:description" content="Notes and records I keep."><meta property="og:url" content="https://meiyi376796.github.io/notes/"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Notes — Personal Catalog"><meta name="twitter:description" content="Notes and records I keep."><script>
+      (() => {
+        const root = document.documentElement;
+        let theme = "system";
+        try {
+          const savedTheme = localStorage.getItem("catalog-theme");
+          if (["system", "light", "dark"].includes(savedTheme)) theme = savedTheme;
+        } catch {}
+        root.dataset.themePreference = theme;
+        root.dataset.theme = theme === "system"
+          ? matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+          : theme;
+        document.querySelector('meta[name="theme-color"]')?.setAttribute(
+          "content",
+          root.dataset.theme === "dark" ? "#151513" : "#F4F3EE",
+        );
+      })();
+    </script><link rel="preload" href="/_astro/libre-franklin-latin-400-normal.DNAyL8lK.woff2" as="font" type="font/woff2" crossorigin="anonymous"><link rel="preload" href="/_astro/libre-franklin-latin-700-normal.TBBKpXzk.woff2" as="font" type="font/woff2" crossorigin="anonymous"><link rel="preload" href="/_astro/ibm-plex-mono-latin-400-normal.DMJ8VG8y.woff2" as="font" type="font/woff2" crossorigin="anonymous"><link rel="preload" href="/_astro/ibm-plex-mono-latin-500-normal.DSY6xOcd.woff2" as="font" type="font/woff2" crossorigin="anonymous"><link rel="stylesheet" href="/_astro/sections.DEhfpc6K.css"></head><body class="site"><a class="skip" href="#main">Skip to content</a><header class="site-header"><div class="masthead"><a class="brand" href="/" aria-label="Personal Catalog, home"><span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><g fill="currentColor"><rect x="3" y="3" width="3" height="10"></rect><rect x="10" y="3" width="3" height="10"></rect><rect x="6" y="5" width="1" height="2"></rect><rect x="9" y="5" width="1" height="2"></rect><rect x="6" y="7" width="4" height="2"></rect><rect x="7" y="9" width="2" height="2"></rect></g></svg></span><span class="brand__text">Personal Catalog</span></a><span class="masthead__edition" data-volume>Vol. 01 / 2026</span><div class="clock" aria-hidden="true"><span class="clock__dot"></span><span id="clock">LOCAL</span></div></div><div class="rainbow" aria-hidden="true"></div></header><script>
+  // Inline so the clock is set before the new page is captured.
+  const clock = document.getElementById("clock");
+  const fmt = new Intl.DateTimeFormat("en-GB", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
+  let timer;
+  const tick = () => {
+    const now = new Date();
+    clock.textContent = `LOCAL ${fmt.format(now)}`;
+    clearTimeout(timer);
+    timer = window.setTimeout(
+      tick,
+      60000 - (now.getSeconds() * 1000 + now.getMilliseconds()),
+    );
+  };
+  tick();
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) tick();
+  });
+
+  const brand = document.querySelector(".brand");
+  const brandText = brand?.querySelector(".brand__text");
+
+  const railStage = window.matchMedia(
+    "(max-height: 480px) and (orientation: landscape) and (min-width: 448px)",
+  );
+  const fitBrand = () => {
+    if (!brand || !brandText) return;
+    brand.removeAttribute("data-compact");
+    // Side rails compact the brand when the wordmark squeezes in its track, as the top bar does across the width.
+    if (railStage.matches) {
+      if (
+        brandText.clientHeight > 0 &&
+        brandText.scrollHeight > brandText.clientHeight
+      ) {
+        brand.setAttribute("data-compact", "");
+      }
+      return;
+    }
+    if (brandText.scrollWidth > brandText.clientWidth) {
+      brand.setAttribute("data-compact", "");
+    }
+  };
+
+  fitBrand();
+  document.fonts?.ready.then(fitBrand);
+  window.addEventListener("resize", fitBrand, { passive: true });
+  // Pinch zoom moves the visual viewport without a window resize, so refit on both signals.
+  window.visualViewport?.addEventListener("resize", fitBrand, { passive: true });
+  window.addEventListener("pageshow", fitBrand);
+  if ("ResizeObserver" in window && brandText) {
+    new ResizeObserver(fitBrand).observe(brandText);
+  }
+</script><main class="stage" id="main" tabindex="-1"><section class="sheet" aria-label="Notes"><div class="sheet__main"><div class="sheet__body"><div class="sheet__head"><h1 class="sheet__title">Notes</h1><span class="sheet__count">00 Entries</span></div><div class="ledger"><div class="ledger__row ledger__row--head"><span>No.</span><span>Note</span><span>Date</span></div><div class="ledger__empty"><p>No notes yet.</p></div></div></div></div></section></main><footer class="bar"><div class="rainbow rainbow--reverse" aria-hidden="true"></div><div class="bar__inner"><a class="bar__link" href="/work/" aria-label="Work">← Work</a><div class="preferences" data-preferences data-open="false"><button class="preferences__trigger" type="button" aria-label="Open preferences" aria-expanded="false" aria-controls="preferences-actions" data-preferences-trigger><svg class="preferences__icon lucide lucide-sliders-horizontal" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-trigger-icon="open">
+  <path d="M10 5H3" />
+  <path d="M12 19H3" />
+  <path d="M14 3v4" />
+  <path d="M16 17v4" />
+  <path d="M21 12h-9" />
+  <path d="M21 19h-5" />
+  <path d="M21 5h-7" />
+  <path d="M8 10v4" />
+  <path d="M8 12H3" />
+</svg><svg class="preferences__icon lucide lucide-x" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-trigger-icon="close" style="visibility: hidden;">
+  <path d="M18 6 6 18" />
+  <path d="m6 6 12 12" />
+</svg></button><div class="preferences__actions" id="preferences-actions" role="group" aria-label="Preference actions" aria-hidden="true" inert data-preferences-actions><div class="preferences__action preferences__action--theme"><button class="preferences__control" type="button" aria-label="Appearance: System. Switch to Light." tabindex="-1" data-theme-cycle><svg class="preferences__icon lucide lucide-sun-moon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-theme-icon="system">
+  <path d="M12 2v2" />
+  <path d="M14.837 16.385a6 6 0 1 1-7.223-7.222c.624-.147.97.66.715 1.248a4 4 0 0 0 5.26 5.259c.589-.255 1.396.09 1.248.715" />
+  <path d="M16 12a4 4 0 0 0-4-4" />
+  <path d="m19 5-1.256 1.256" />
+  <path d="M20 12h2" />
+</svg><svg class="preferences__icon lucide lucide-sun" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-theme-icon="light" style="display: none;">
+  <circle cx="12" cy="12" r="4" />
+  <path d="M12 2v2" />
+  <path d="M12 20v2" />
+  <path d="m4.93 4.93 1.41 1.41" />
+  <path d="m17.66 17.66 1.41 1.41" />
+  <path d="M2 12h2" />
+  <path d="M20 12h2" />
+  <path d="m6.34 17.66-1.41 1.41" />
+  <path d="m19.07 4.93-1.41 1.41" />
+</svg><svg class="preferences__icon lucide lucide-moon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-theme-icon="dark" style="display: none;">
+  <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
+</svg></button><span class="preferences__tooltip" aria-hidden="true"><span>Appearance</span><strong data-theme-current>System</strong></span></div><div class="preferences__action preferences__action--tilt" data-tilt-item hidden><button class="preferences__control" type="button" role="switch" aria-checked="false" aria-label="Device tilt: Off" aria-disabled="false" tabindex="-1" data-tilt-toggle><svg class="preferences__icon lucide lucide-rotate-3-d" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <path d="m15.194 13.707 3.814 1.86-1.86 3.814" />
+  <path d="M16.47214 7.52786 A 5 10 0 1 0 13 21.79796" />
+  <path d="M21.79796 11 A 10 5 0 1 0 19 15.57071" />
+</svg></button><span class="preferences__tooltip" aria-hidden="true"><span>Device tilt</span><strong data-tilt-current>Off</strong></span></div></div></div><script type="module">var e=`catalog-theme`,t=[`system`,`light`,`dark`],n={system:`System`,light:`Light`,dark:`Dark`},r=window.matchMedia(`(prefers-color-scheme: dark)`),i=()=>{try{let t=localStorage.getItem(e);return t===`light`||t===`dark`||t===`system`?t:`system`}catch{return`system`}};function a(){let a=document.documentElement,o=document.querySelector(`meta[name="theme-color"]`),s=document.querySelector(`[data-preferences]`),c=document.querySelector(`[data-preferences-trigger]`),l=document.querySelector(`[data-preferences-actions]`),u=document.querySelector(`[data-theme-cycle]`),d=document.querySelector(`[data-theme-current]`);if(!s||!c||!l||!u)return;let f=c.querySelectorAll(`[data-trigger-icon]`),p=u.querySelectorAll(`[data-theme-icon]`),m=l.querySelectorAll(`button`),h=!1,g=(e,t=!1)=>{h=e,!h&&l.contains(document.activeElement)&&c.focus({preventScroll:!0}),s.dataset.open=String(h),c.setAttribute(`aria-expanded`,String(h)),c.setAttribute(`aria-label`,h?`Close preferences`:`Open preferences`),f.forEach(e=>{e.style.visibility=e.dataset.triggerIcon===`close`===h?`visible`:`hidden`}),l.setAttribute(`aria-hidden`,String(!h)),l.toggleAttribute(`inert`,!h),m.forEach(e=>{e.tabIndex=h?0:-1}),t&&c.focus()},_=(i,s=!0)=>{a.dataset.themePreference=i,a.dataset.theme=i===`system`?r.matches?`dark`:`light`:i,o&&(o.content=getComputedStyle(a).getPropertyValue(`--paper`).trim());let c=n[i],l=t[(t.indexOf(i)+1)%t.length];if(d&&(d.textContent=c),u.setAttribute(`aria-label`,`Appearance: ${c}. Switch to ${n[l]}.`),p.forEach(e=>{e.style.display=e.dataset.themeIcon===i?``:`none`}),s)try{localStorage.setItem(e,i)}catch{}};_(i(),!1),g(!1),c.addEventListener(`click`,()=>g(!h)),u.addEventListener(`click`,()=>{let e=a.dataset.themePreference,n=t[(t.indexOf(e)+1)%t.length];_(n)}),document.addEventListener(`pointerdown`,e=>{h&&!s.contains(e.target)&&g(!1)}),document.addEventListener(`keydown`,e=>{h&&e.key===`Escape`&&(e.preventDefault(),g(!1,!0))}),window.addEventListener(`pagehide`,()=>g(!1)),r.addEventListener(`change`,()=>{a.dataset.themePreference===`system`&&_(`system`,!1)}),window.addEventListener(`storage`,t=>{t.key===e&&_(i(),!1)})}a();</script><a class="bar__link bar__link--next" href="/about/" aria-label="About">About →</a></div></footer><script type="module">var e=document.querySelector(`[data-scroll-top]`),t=document.querySelector(`.stage`);e?.addEventListener(`click`,e=>{if(!t)return;e.preventDefault();let n=window.matchMedia(`(prefers-reduced-motion: reduce)`).matches;t.scrollTo({top:0,behavior:n?`auto`:`smooth`})});</script><div class="gate gate--narrow"><p class="gate__kicker">Minimum viewport</p><p class="gate__title">320 px</p><p class="gate__note">Zoom out to continue.</p></div><div class="gate gate--short"><p class="gate__kicker">Minimum height</p><p class="gate__title">256 px</p><p class="gate__note">Zoom out to continue.</p></div><div class="gate gate--fallback"><p class="gate__kicker">Unsupported browser</p><p class="gate__title">Update required.</p><p class="gate__note">This catalog needs a current browser.</p></div><script type="module">var e=e=>String(e).padStart(2,`0`),t={startYear:2026,rolloverMonth:5,rolloverDay:27},{label:n}=((n=new Date)=>{let r=t.rolloverMonth-1,i=n.getFullYear();return n.getMonth()>r||n.getMonth()===r&&n.getDate()>=t.rolloverDay||--i,i=Math.max(i,t.startYear),{label:`Vol. ${e(i-t.startYear+1)} / ${i}`}})();document.querySelectorAll(`[data-volume]`).forEach(e=>{e.textContent=n});</script></body></html>
